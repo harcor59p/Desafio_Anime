@@ -13,12 +13,12 @@ public class Principal {
 
     public void muestraElMenu(){
         var json = consumoApi.obtenerDatos(URL_BASE) ;
-        System.out.println(json);
+        //System.out.println(json);
         var datos1 = conversor.obtenerDatos(json , AtributosAnimes.class) ;
         var datos = conversor.obtenerDatos(json , Datos.class) ;
         var datos2 = conversor.obtenerDatos(json , DatosAnimes.class) ;
         System.out.println(datos);
-        System.out.println(datos1);
-        System.out.println(datos2);
+        //System.out.println(datos1);
+        //System.out.println(datos2);
     }
 }

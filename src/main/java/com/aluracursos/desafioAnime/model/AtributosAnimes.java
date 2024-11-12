@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record AtributosAnimes(
         @JsonAlias("id") Integer id,
-        DatosAnimes datosAnimes
+        @JsonAlias("attributes") DatosAnimes datosAnimes
+        //DatosAnimes datosAnimes
 
         ) {
 }
