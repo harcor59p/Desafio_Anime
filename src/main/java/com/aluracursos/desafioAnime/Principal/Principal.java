@@ -6,6 +6,8 @@ import com.aluracursos.desafioAnime.model.DatosAnimes;
 import com.aluracursos.desafioAnime.service.ConsumoApi;
 import com.aluracursos.desafioAnime.service.ConvierteDatos;
 
+import java.util.Comparator;
+
 public class Principal {
     private static final String URL_BASE = "https://kitsu.io/api/edge/anime?filter[categories]=adventure" ;
     private ConsumoApi consumoApi = new ConsumoApi() ;
@@ -14,11 +16,12 @@ public class Principal {
     public void muestraElMenu(){
         var json = consumoApi.obtenerDatos(URL_BASE) ;
         //System.out.println(json);
-        var datos1 = conversor.obtenerDatos(json , AtributosAnimes.class) ;
         var datos = conversor.obtenerDatos(json , Datos.class) ;
-        var datos2 = conversor.obtenerDatos(json , DatosAnimes.class) ;
         System.out.println(datos);
-        //System.out.println(datos1);
-        //System.out.println(datos2);
+
+        // Top 5 Animes mejor rankeados
+        System.out.println("Top 5 Animes mejor rankeados");
+        datos.
+
     }
 }

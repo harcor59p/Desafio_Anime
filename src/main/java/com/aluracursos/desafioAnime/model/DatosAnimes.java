@@ -11,6 +11,5 @@ public record DatosAnimes(
        @JsonAlias("userCount") Integer cantidadUsusarios,
        @JsonAlias("favoritesCount") Integer conteoFavoritos,
        @JsonAlias("startDate") String fechaCreacion
-
 ) {
 }
