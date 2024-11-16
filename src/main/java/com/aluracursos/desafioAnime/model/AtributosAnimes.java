@@ -13,5 +13,5 @@ public record AtributosAnimes(
         @JsonAlias("favorites") Integer conteoFavoritos,
         @JsonAlias("popularity") Integer popularidad ,
         @JsonAlias("year") Integer fechaCreacion
-        ) {
+) {
 }

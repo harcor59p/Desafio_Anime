@@ -6,8 +6,10 @@ import com.aluracursos.desafioAnime.service.ConsumoApi;
 import com.aluracursos.desafioAnime.service.ConvierteDatos;
 
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Principal {
     private static final String URL_BASE = "https://api.jikan.moe/v4/top/anime" ;
@@ -17,9 +19,9 @@ public class Principal {
 
     public void muestraElMenu(){
         var json = consumoApi.obtenerDatos(URL_BASE) ;
-        //System.out.println(json);
+        System.out.println(json);
         var datos = conversor.obtenerDatos(json , Datos.class) ;
-        //System.out.println(datos);
+        System.out.println(datos);
 
         // Top 5 Animes mejor rankeados
         System.out.println("Top 5 Animes con mejor popularidad");
@@ -57,5 +59,14 @@ public class Principal {
         }else {
             System.out.println("Anime no encontrado");
         }
+
+        // Trabajando con estadisticas
+        DoubleSummaryStatistics est = datos.atributosAnimes().stream()
+                .filter(a -> a.calificacion() >0.0)
+                .collect(Collectors.summarizingDouble(AtributosAnimes::calificacion));
+        System.out.println("Promedio de calificacion de los Animes es: " + est.getAverage());
+        System.out.println("El anime con la mejor calificacion fue de: " + est.getMax());
+        System.out.println("El anime con la calificacion mas baja es de: " + est.getMin());
+        System.out.println("la cantidd de animes tenidos en cuenta en esta estadisticas es de: " + est.getCount());
     }
 }
